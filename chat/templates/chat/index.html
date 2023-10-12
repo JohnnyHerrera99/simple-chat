@@ -15,10 +15,10 @@
                         <section class="hero is-primary">
                             <div class="hero-body">
                                 <p class="title">
-                                    Chatty
+                                    Simple Chat
                                 </p>
                                 <p class="subtitle">
-                                    A simple chat built with Django, Channels and Redis
+                                    built with Django, Channels and Redis
                                 </p>
                             </div>
                         </section>
@@ -29,6 +29,7 @@
                             <label>Room name</label>
 
                             <div class="control">
+                                
                                 <input class="input" type="text" placeholder="Room name" id="room-name-input">
                             </div>
                         </div>
@@ -38,7 +39,7 @@
                                 <a class="button is-info" id="room-name-submit">Submit</a>
                             </div>
                         </div>
-                        <small class="has-text-grey-light">Your username: {{ username }}</small>
+                        <small class="has-text-grey-light">Your username: {{ request.user.username }}</small>
                     </div>
                 </div>
             </div>
