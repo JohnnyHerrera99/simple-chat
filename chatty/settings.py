@@ -85,12 +85,14 @@ CHANNEL_LAYERS = {
 
 
 # Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'chatdb', 
+        'USER': 'chatuser',
+        'PASSWORD': 'G6edopcmS8mwKDJ',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
     }
 }
 
@@ -137,3 +139,11 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+USER_DATA_TEST = dict(
+    username='john123',
+    email='jhon@beatles.com',
+    password='1mag1n3',
+    first_name='john',
+    last_name='lennon'
+)
