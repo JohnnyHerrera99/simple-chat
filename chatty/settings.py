@@ -134,9 +134,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 USER_DATA_TEST = dict(
@@ -146,3 +145,22 @@ USER_DATA_TEST = dict(
     first_name='john',
     last_name='lennon'
 )
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': 'loggin.log',
+        },
+    },   
+    'loggers': {
+        '': {
+            'handlers': ['file'],
+            'level': 'WARNING',
+            'propagate': True,
+        },
+    },
+}
