@@ -1,7 +1,9 @@
-import json
+from django.contrib.admin.models import LogEntry, ADDITION
+from django.contrib.contenttypes.models import ContentType
 from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import sync_to_async
 from .models import Message
+import json
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -57,4 +59,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @sync_to_async
     def save_message(self, username, room, message, user_id):
-        Message.objects.create(username=username, room=room, content=message, user_id=user_id)
+        message = Message.objects.create(username=username, room=room, content=message, user_id=user_id)
+        
+        # Register message
+        content_type = ContentType.objects.get_for_model(Message)
+        LogEntry.objects.create(
+            content_type=content_type,
+            object_id=message.id,
+            user_id=user_id,
+            action_flag=ADDITION
+        )
