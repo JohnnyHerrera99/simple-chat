@@ -1,4 +1,4 @@
-asgiref==3.7.2
+backports.zoneinfo==0.2.1;python_version<"3.9"
 async-timeout==4.0.3
 attrs==23.1.0
 autobahn==23.1.2
@@ -29,4 +29,3 @@ sqlparse==0.4.4
 twisted==23.8.0
 txaio==23.1.1
 typing-extensions==4.8.0
-zope.interface==6.1

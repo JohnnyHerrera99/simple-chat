@@ -71,14 +71,13 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'chatty.wsgi.application'
 ASGI_APPLICATION = 'chatty.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('127.0.0.1', 6379)],
+            'hosts': [('redis', 6379)],
         }
     }
 }
@@ -91,7 +90,7 @@ DATABASES = {
         'NAME': 'chatdb', 
         'USER': 'chatuser',
         'PASSWORD': 'G6edopcmS8mwKDJ',
-        'HOST': '127.0.0.1', 
+        'HOST': 'postgres', 
         'PORT': '5432',
     }
 }
