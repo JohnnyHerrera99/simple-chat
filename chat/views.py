@@ -3,6 +3,10 @@ from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Message
 from .forms import MessageForm
+import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class LoginRequiredView(LoginRequiredMixin):
@@ -13,11 +17,20 @@ class LoginRequiredView(LoginRequiredMixin):
 class HomePageView(LoginRequiredView, TemplateView):
     template_name = "chat/index.html"
 
+    def dispatch(self, request, *args, **kwargs):
+        logger.warning(f'[{datetime.datetime.now()}] Homepage was accessed - user {request.user}')
+        return super().dispatch(request, *args, **kwargs)
+
 
 class RoomView(LoginRequiredView, ListView):
     template_name = "chat/room.html"
     context_object_name = "messages"
     model = Message
+
+    def dispatch(self, request, *args, **kwargs):
+        logger.warning(f'[{datetime.datetime.now()}] Room ({self.kwargs.get("room_name")}) ' \
+            f'was accessed - user {self.request.user}')
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
