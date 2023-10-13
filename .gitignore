@@ -1,2 +1,3 @@
 *.pyc
 redis/dump.rdb
+*.log
