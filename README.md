@@ -28,3 +28,14 @@ In addition the loggin is used for the entries and interactions of each view, yo
 docker-compose exec django sh
 tail -f loggin.log
 ```
+
+## Test cases
+Test cases can be run manually through this command:
+project in the `loggin.log` file. Having the docker-compose active, you can access it using this command:
+```
+docker-compose exec django sh
+python manage.py test
+```
+
+## Note
+This application is NOT intended for production use and is merely a demonstration of how the django framework can be used to make connections using WebSockets.
